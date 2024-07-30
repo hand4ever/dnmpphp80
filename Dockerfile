@@ -1,10 +1,10 @@
-ARG PHP_VERSION
+ARG PHP_VERSION=php:8.0.30-fpm-alpine
 FROM ${PHP_VERSION}
 
-ARG TZ
-ARG PHP_EXTENSIONS
-ARG CONTAINER_PACKAGE_URL
-ARG COMPOSER_URL
+ARG TZ=Asia/Shanghai
+ARG PHP_EXTENSIONS=pdo_mysql,mysqli,mbstring,gd,curl,opcache,intl,zip,xsl
+ARG CONTAINER_PACKAGE_URL=mirrors.ustc.edu.cn
+ARG COMPOSER_URL=mirrors.tencent.com
 
 RUN if [ "${CONTAINER_PACKAGE_URL}" != "" ] ; then sed -i "s/dl-cdn.alpinelinux.org/${CONTAINER_PACKAGE_URL}/g" /etc/apk/repositories ; fi
 
